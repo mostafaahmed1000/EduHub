@@ -1,0 +1,97 @@
+{
+  "subjects": [
+    { "id": 1, "title": "Mathematics", "slug": "mathematics" },
+    { "id": 2, "title": "Physics", "slug": "physics" },
+    { "id": 3, "title": "Computer Science", "slug": "computer-science" }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "subject": { "id": 1, "title": "Mathematics" },
+      "title": "Calculus 101",
+      "slug": "calculus-101",
+      "overview": "Introduction to Calculus",
+      "created": "2023-01-01T12:00:00Z",
+      "owner": { "id": 1, "username": "instructor1" }
+    },
+    {
+      "id": 2,
+      "subject": { "id": 2, "title": "Physics" },
+      "title": "Classical Mechanics",
+      "slug": "classical-mechanics",
+      "overview": "Fundamentals of Classical Mechanics",
+      "created": "2023-02-01T12:00:00Z",
+      "owner": { "id": 2, "username": "instructor2" }
+    },
+    {
+      "id": 3,
+      "subject": { "id": 3, "title": "Computer Science" },
+      "title": "Introduction to Programming",
+      "slug": "intro-to-programming",
+      "overview": "Learn the basics of programming",
+      "created": "2023-03-01T12:00:00Z",
+      "owner": { "id": 3, "username": "instructor3" }
+    }
+  ],
+  "course_contents": [
+    {
+      "id": 1,
+      "subject": { "id": 1, "title": "Mathematics" },
+      "title": "Calculus 101",
+      "slug": "calculus-101",
+      "overview": "Introduction to Calculus",
+      "created": "2023-01-01T12:00:00Z",
+      "owner": { "id": 1, "username": "instructor1" },
+      "modules": [
+        {
+          "id": 1,
+          "title": "Introduction to Limits",
+          "description": "Understanding the concept of limits",
+          "contents": [
+            {
+              "id": 1,
+              "title": "What are Limits?",
+              "content_type": "text",
+              "content": "<p>Limits are the foundation of calculus. In this lesson, we'll explore what limits are and how they're used in mathematics.</p>"
+            },
+            {
+              "id": 2,
+              "title": "Calculating Simple Limits",
+              "content_type": "video",
+              "url": "https://example.com/videos/simple-limits.mp4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "student1",
+      "email": "student1@example.com",
+      "token": "mock-token-student1"
+    },
+    {
+      "id": 2,
+      "username": "instructor1",
+      "email": "instructor1@example.com",
+      "token": "mock-token-instructor1"
+    }
+  ],
+  "enrolled_courses": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "course_id": 1
+    }
+  ],
+  "owned_courses": [
+    {
+      "id": 1,
+      "user_id": 2,
+      "course_id": 1
+    }
+  ]
+}
+
