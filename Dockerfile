@@ -19,8 +19,5 @@ RUN npm run build
 # Expose the port Next.js runs on
 EXPOSE 3000
 
-COPY wait-for-it.sh /wait-for-it.sh
-RUN chmod +x /wait-for-it.sh
-
-CMD ["/wait-for-it.sh", "web:8000", "--", "npm", "run", "build"]
+CMD ["npm", "start"]
 # Start the Next.js app
