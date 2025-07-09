@@ -2,8 +2,8 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 async function getData() {
-  const coursesRes = await fetch('http://host.docker.internal:80/api/courses/')
-  const subjectsRes = await fetch('http://host.docker.internal:80/api/subjects/')
+  const coursesRes = await fetch('http://13.49.44.32/api/courses/')
+  const subjectsRes = await fetch('http://13.49.44.32/api/subjects/')
   const courses = await coursesRes.json()
   const subjects = await subjectsRes.json()
   return { courses, subjects }
