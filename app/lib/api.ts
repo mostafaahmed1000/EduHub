@@ -1,6 +1,6 @@
 import { Course } from '@/app/types'
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api"
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://host.docker.internal:80/api"
 
 async function fetchAPI(endpoint: string, options: RequestInit = {}) {
   const headers = {
