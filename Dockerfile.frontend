@@ -1,15 +1,8 @@
 # Use official Node.js image as the base
 FROM node:20-alpine
 
-# Install bash (required for wait-for-it.sh)
-RUN apk add --no-cache bash
-
 # Set working directory
 WORKDIR /app
-
-# Copy wait-for-it.sh script
-COPY wait-for-it.sh /app/wait-for-it.sh
-RUN chmod +x /app/wait-for-it.sh
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
@@ -23,5 +16,5 @@ COPY . .
 # Expose the port Next.js runs on
 EXPOSE 3000
 
-# Wait for backend, build, then start
-CMD ["./wait-for-it.sh", "web:8000", "--timeout=60", "--", "sh", "-c", "npm run build && npm start"]
+# Build and start the application
+CMD ["sh", "-c", "npm run build && npm start"]
