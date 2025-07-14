@@ -1,6 +1,6 @@
 import { Course } from '@/app/types'
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://http://web:8000/api"
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://web:8000/api"
 
 async function fetchAPI(endpoint: string, options: RequestInit = {}) {
   const headers = {

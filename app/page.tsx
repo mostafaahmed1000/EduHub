@@ -2,8 +2,8 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 async function getData() {
-  const coursesRes = await fetch('http://${process.env.NEXT_PUBLIC_API_URL}/api/courses/')
-  const subjectsRes = await fetch('http://${process.env.NEXT_PUBLIC_API_URL}/api/subjects/')
+  const coursesRes = await fetch(`http://${process.env.NEXT_PUBLIC_API_URL || 'web:8000'}/api/courses/`)
+  const subjectsRes = await fetch(`http://${process.env.NEXT_PUBLIC_API_URL || 'web:8000'}/api/subjects/`)
   const courses = await coursesRes.json()
   const subjects = await subjectsRes.json()
   return { courses, subjects }
