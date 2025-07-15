@@ -23,8 +23,8 @@ const nextConfig = {
   },
   // Add this to disable static generation for problematic pages
   output: 'standalone',
-  // Disable static generation for specific pages
-  unstable_excludeFiles: ['**/courses/**', '**/subjects/**', '**/page.tsx'],
+  // Remove the unsupported option
+  // unstable_excludeFiles: ['**/courses/**', '**/subjects/**', '**/page.tsx'],
 }
 
 mergeConfig(nextConfig, userConfig)

@@ -1,17 +1,41 @@
+'use client';
+
 import { getCourses } from "../lib/api"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { useEffect, useState } from "react"
+import { useSearchParams } from "next/navigation"
 
-export default async function SearchPage({
-  searchParams,
-}: {
-  searchParams: { q: string }
-}) {
-  const query = searchParams.q
-  const allCourses = await getCourses()
-  const filteredCourses = allCourses.filter((course: { title: string }) =>
-    course.title.toLowerCase().includes(query.toLowerCase()),
-  )
+export default function SearchPage() {
+  const searchParams = useSearchParams()
+  const query = searchParams.get('q') || ''
+  const [courses, setCourses] = useState<any[]>([])
+  const [filteredCourses, setFilteredCourses] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchCourses() {
+      try {
+        const allCourses = await getCourses()
+        setCourses(allCourses)
+        setFilteredCourses(
+          allCourses.filter((course: { title: string }) =>
+            course.title.toLowerCase().includes(query.toLowerCase())
+          )
+        )
+      } catch (error) {
+        console.error('Error fetching courses:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchCourses()
+  }, [query])
+
+  if (loading) {
+    return <div className="container mx-auto px-4 py-12">Searching...</div>
+  }
 
   return (
     <div className="container mx-auto px-4 py-12">

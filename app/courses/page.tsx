@@ -1,10 +1,33 @@
-import Link from "next/link"
-import { getCourses } from "../lib/api"
-import { Button } from "@/components/ui/button"
-import { Course } from "@/app/types"
+'use client';
 
-export default async function CoursesPage() {
-  const courses = await getCourses()
+import { useEffect, useState } from 'react';
+import Link from "next/link";
+import { getCourses } from "../lib/api";
+import { Button } from "@/components/ui/button";
+import { Course } from "@/app/types";
+
+export default function CoursesPage() {
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    async function loadCourses() {
+      try {
+        const data = await getCourses();
+        setCourses(data);
+      } catch (error) {
+        console.error('Failed to load courses:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    loadCourses();
+  }, []);
+
+  if (loading) {
+    return <div className="container mx-auto px-4 py-12">Loading courses...</div>;
+  }
 
   return (
     <div className="container mx-auto px-4 py-12">

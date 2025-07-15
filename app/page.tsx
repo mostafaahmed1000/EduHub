@@ -1,32 +1,45 @@
+'use client';
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { useEffect, useState } from "react"
 
-async function getData() {
-  // Use web service directly for server-side rendering
-  const isServer = typeof window === 'undefined'
-  const baseUrl = isServer ? "http://web:8000" : ""
-  
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 seconds timeout
-  
-  try {
-    const coursesRes = await fetch(`${baseUrl}/api/courses/`, { signal: controller.signal })
-    const subjectsRes = await fetch(`${baseUrl}/api/subjects/`, { signal: controller.signal })
-    const courses = await coursesRes.json()
-    const subjects = await subjectsRes.json()
-    clearTimeout(timeoutId);
-    return { courses, subjects }
-  } catch (error) {
-    clearTimeout(timeoutId);
-    console.error('Error fetching data:', error);
-    // Return empty data to prevent build failures
-    return { courses: [], subjects: [] };
+export default function Home() {
+  const [courses, setCourses] = useState<any[]>([])
+  const [subjects, setSubjects] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const baseUrl = ""
+        const coursesRes = await fetch(`${baseUrl}/api/courses/`, { 
+          signal: AbortSignal.timeout(30000) // 30 seconds timeout
+        })
+        const subjectsRes = await fetch(`${baseUrl}/api/subjects/`, { 
+          signal: AbortSignal.timeout(30000) // 30 seconds timeout
+        })
+        
+        if (coursesRes.ok && subjectsRes.ok) {
+          const coursesData = await coursesRes.json()
+          const subjectsData = await subjectsRes.json()
+          setCourses(coursesData)
+          setSubjects(subjectsData)
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  if (loading) {
+    return <div className="container mx-auto px-4 py-12">Loading...</div>
   }
-}
 
-export default async function Home() {
-  const { courses, subjects } = await getData()
-  
   return (
     <div className="container mx-auto px-4 py-12">
       <section className="text-center mb-16">

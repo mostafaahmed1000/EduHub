@@ -1,8 +1,32 @@
+'use client';
+
 import Link from "next/link"
 import { getSubjects } from "../lib/api"
+import { useEffect, useState } from "react"
+import { Subject } from "@/app/types"
 
-export default async function SubjectsPage() {
-  const subjects = await getSubjects()
+export default function SubjectsPage() {
+  const [subjects, setSubjects] = useState<Subject[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchSubjects() {
+      try {
+        const data = await getSubjects()
+        setSubjects(data)
+      } catch (error) {
+        console.error('Error fetching subjects:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchSubjects()
+  }, [])
+
+  if (loading) {
+    return <div className="container mx-auto px-4 py-12">Loading subjects...</div>
+  }
 
   return (
     <div className="container mx-auto px-4 py-12">
