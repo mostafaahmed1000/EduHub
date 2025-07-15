@@ -2,8 +2,12 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 async function getData() {
-  const coursesRes = await fetch(`/api/courses/`)
-  const subjectsRes = await fetch(`/api/subjects/`)
+  // Determine if we're running on the server
+  const isServer = typeof window === 'undefined'
+  const baseUrl = isServer ? "http://web:8000/api" : "/api"
+  
+  const coursesRes = await fetch(`${baseUrl}/courses/`)
+  const subjectsRes = await fetch(`${baseUrl}/subjects/`)
   const courses = await coursesRes.json()
   const subjects = await subjectsRes.json()
   return { courses, subjects }

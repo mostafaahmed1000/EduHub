@@ -1,6 +1,12 @@
 import { Course } from '@/app/types'
 
-const API_URL = "/api"
+// Determine if we're running on the server or client
+const isServer = typeof window === 'undefined'
+
+// Use different base URLs for server and client
+const API_URL = isServer 
+  ? "http://web:8000/api" // Use internal Docker network URL on server
+  : "/api"              // Use relative URL on client
 
 async function fetchAPI(endpoint: string, options: RequestInit = {}) {
   const headers = {
