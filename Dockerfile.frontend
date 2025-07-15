@@ -16,26 +16,12 @@ RUN npm install --force
 # Copy the rest of the application code
 COPY . .
 
-# Create a startup script
-# Create a start script that waits for the backend
-RUN echo '#!/bin/sh\n\
-# Wait for backend to be ready\n\
-echo "Waiting for backend to be ready..."\n\
-until curl -s http://web:8000/ > /dev/null; do\n\
-  echo "Backend not ready yet, retrying in 3 seconds..."\n\
-  sleep 3\n\
-done\n\
-echo "Backend is ready, starting frontend..."\n\
-\n\
-# Build and start the application\n\
-npm run build && npm start' > /app/start.sh && \
-    chmod +x /app/start.sh
-
-# Set the entrypoint to use this script
-ENTRYPOINT ["/app/start.sh"]
+# Wait for backend to be ready
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
 
 # Expose the port Next.js runs on
 EXPOSE 3000
 
 # Run the startup script
-CMD ["/app/start.sh"]
+ENTRYPOINT ["/app/start.sh"]
