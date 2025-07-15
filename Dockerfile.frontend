@@ -1,6 +1,9 @@
 # Use official Node.js image as the base
 FROM node:20-alpine
 
+# Install curl for health check
+RUN apk add --no-cache curl
+
 # Set working directory
 WORKDIR /app
 
@@ -13,8 +16,13 @@ RUN npm install --force
 # Copy the rest of the application code
 COPY . .
 
+# Create a startup script
+RUN echo '#!/bin/sh\n
+# Wait for backend to be ready\necho "Waiting for backend to be ready..."\nuntil curl -s http://web:8000/ > /dev/null; do\n  echo "Backend not ready yet, retrying in 3 seconds..."\n  sleep 3\ndone\necho "Backend is ready, starting frontend..."\n\n# Build and start the application\nnpm run build && npm start' > /app/start.sh \
+    && chmod +x /app/start.sh
+
 # Expose the port Next.js runs on
 EXPOSE 3000
 
-# Build and start the application
-CMD ["sh", "-c", "npm run build && npm start"]
+# Run the startup script
+CMD ["/app/start.sh"]
