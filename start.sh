@@ -1,12 +1,22 @@
 #!/bin/sh
 
-# Wait for backend to be ready
-echo "Waiting for backend to be ready..."
-until curl -s http://web:8000/ > /dev/null; do
-  echo "Backend not ready yet, retrying in 3 seconds..."
-  sleep 3
-done
-echo "Backend is ready, starting frontend..."
+# Enhanced health check with timeout
+wait_for_backend() {
+  echo "Waiting for backend at web:8000..."
+  for i in {1..10}; do
+    if curl -sSf http://web:8000/health-check >/dev/null; then
+      echo "Backend ready!"
+      return 0
+    fi
+    echo "Attempt $i/10 - Backend not ready, retrying in 3s..."
+    sleep 3
+  done
+  echo "Backend connection failed after 30s!"
+  exit 1
+}
 
-# Build and start the application
-npm run build && npm start
+wait_for_backend
+
+# Build and start frontend
+npm run build
+npm start
