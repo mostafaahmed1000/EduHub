@@ -17,7 +17,7 @@ async function fetchAPI(endpoint: string, options: RequestInit = {}) {
 
   // For server-side rendering, we need to use the absolute URL with the nginx service
   const isServer = typeof window === 'undefined'
-  const baseUrl = isServer ? "http://nginx/api" : API_URL
+  const baseUrl = isServer ? "http://nginx:80/api" : API_URL
   
   const res = await fetch(`${baseUrl}${endpoint}`, config)
 

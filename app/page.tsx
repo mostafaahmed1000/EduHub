@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 async function getData() {
   // Use Nginx as the gateway for all requests
   const isServer = typeof window === 'undefined'
-  const baseUrl = isServer ? "http://nginx" : ""
+  const baseUrl = isServer ? "http://nginx:80" : ""
   
   const coursesRes = await fetch(`${baseUrl}/api/courses/`)
   const subjectsRes = await fetch(`${baseUrl}/api/subjects/`)
