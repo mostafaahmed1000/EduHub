@@ -2,9 +2,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 async function getData() {
-  // Use Nginx as the gateway for all requests
+  // Use web service directly for server-side rendering
   const isServer = typeof window === 'undefined'
-  const baseUrl = isServer ? "http://nginx:80" : ""
+  const baseUrl = isServer ? "http://web:8000" : ""
   
   const coursesRes = await fetch(`${baseUrl}/api/courses/`)
   const subjectsRes = await fetch(`${baseUrl}/api/subjects/`)
