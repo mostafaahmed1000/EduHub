@@ -1,12 +1,7 @@
 import { Course } from '@/app/types'
 
-// Determine if we're running on the server or client
-const isServer = typeof window === 'undefined'
-
-// Use different base URLs for server and client
-const API_URL = isServer 
-  ? "http://web:8000/api" // Use internal Docker network URL on server
-  : "/api"              // Use relative URL on client
+// Use Nginx as the gateway for all requests
+const API_URL = "/api"
 
 async function fetchAPI(endpoint: string, options: RequestInit = {}) {
   const headers = {
@@ -20,7 +15,11 @@ async function fetchAPI(endpoint: string, options: RequestInit = {}) {
     credentials: 'include' as RequestCredentials,
   }
 
-  const res = await fetch(`${API_URL}${endpoint}`, config)
+  // For server-side rendering, we need to use the absolute URL with the nginx service
+  const isServer = typeof window === 'undefined'
+  const baseUrl = isServer ? "http://nginx/api" : API_URL
+  
+  const res = await fetch(`${baseUrl}${endpoint}`, config)
 
   if (!res.ok) {
     const errorData = await res.text()
