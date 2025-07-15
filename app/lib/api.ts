@@ -1,6 +1,6 @@
 import { Course } from '@/app/types'
 
-const API_URL = "http://web:8000/api"
+const API_URL = "/api"
 
 async function fetchAPI(endpoint: string, options: RequestInit = {}) {
   const headers = {
