@@ -13,9 +13,11 @@ async function fetchAPI(endpoint: string, options: RequestInit = {}) {
     ...options,
     headers,
     credentials: 'include' as RequestCredentials,
+    // Add a longer timeout for the fetch request
+    signal: AbortSignal.timeout(30000), // 30 seconds timeout
   }
 
-  // For server-side rendering, we need to use the absolute URL with the web service directly
+  // For server-side rendering, we need to use the absolute URL with the nginx service
   const isServer = typeof window === 'undefined'
   const baseUrl = isServer ? "http://web:8000/api" : API_URL
   

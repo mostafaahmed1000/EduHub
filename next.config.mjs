@@ -21,6 +21,10 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  // Add this to disable static generation for problematic pages
+  output: 'standalone',
+  // Disable static generation for specific pages
+  unstable_excludeFiles: ['**/courses/**', '**/subjects/**', '**/page.tsx'],
 }
 
 mergeConfig(nextConfig, userConfig)

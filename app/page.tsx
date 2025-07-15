@@ -6,11 +6,22 @@ async function getData() {
   const isServer = typeof window === 'undefined'
   const baseUrl = isServer ? "http://web:8000" : ""
   
-  const coursesRes = await fetch(`${baseUrl}/api/courses/`)
-  const subjectsRes = await fetch(`${baseUrl}/api/subjects/`)
-  const courses = await coursesRes.json()
-  const subjects = await subjectsRes.json()
-  return { courses, subjects }
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 seconds timeout
+  
+  try {
+    const coursesRes = await fetch(`${baseUrl}/api/courses/`, { signal: controller.signal })
+    const subjectsRes = await fetch(`${baseUrl}/api/subjects/`, { signal: controller.signal })
+    const courses = await coursesRes.json()
+    const subjects = await subjectsRes.json()
+    clearTimeout(timeoutId);
+    return { courses, subjects }
+  } catch (error) {
+    clearTimeout(timeoutId);
+    console.error('Error fetching data:', error);
+    // Return empty data to prevent build failures
+    return { courses: [], subjects: [] };
+  }
 }
 
 export default async function Home() {
