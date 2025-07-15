@@ -1,17 +1,18 @@
 'use client';
 
-import { getCourses } from "../lib/api"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { useEffect, useState } from "react"
-import { useSearchParams } from "next/navigation"
+import { getCourses } from "../lib/api";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function SearchPage() {
-  const searchParams = useSearchParams()
-  const query = searchParams.get('q') || ''
-  const [courses, setCourses] = useState<any[]>([])
-  const [filteredCourses, setFilteredCourses] = useState<any[]>([])
-  const [loading, setLoading] = useState(true)
+function SearchResults() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get('q') || '';
+  const [courses, setCourses] = useState<any[]>([]);
+  const [filteredCourses, setFilteredCourses] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchCourses() {
@@ -59,5 +60,13 @@ export default function SearchPage() {
       )}
     </div>
   )
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div>Loading search results...</div>}>
+      <SearchResults />
+    </Suspense>
+  );
 }
 
