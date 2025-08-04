@@ -23,7 +23,7 @@ export default async function CoursesPage() {
               <h2 className="text-2xl font-semibold mb-2">{course.title}</h2>
               <p className="text-gray-600 mb-4">Instructor: {course.owner.full_name}</p>
               <Button variant="outline" asChild>
-          <Link href={`/eduhub/courses/${course.id}`}>Learn More</Link>
+          <Link href={`/courses/${course.id}`}>Learn More</Link>
               </Button>
             </div>
           </div>

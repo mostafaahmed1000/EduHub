@@ -18,7 +18,7 @@ export default async function Home() {
         <h1 className="text-4xl font-bold mb-4">Welcome to EduHub</h1>
         <p className="text-xl mb-8">Discover, Learn, and Grow with Our Wide Range of Courses</p>
         <Button asChild>
-          <Link href="/eduhub/courses">Explore Courses</Link>
+          <Link href="/courses">Explore Courses</Link>
         </Button>
       </section>
 
@@ -36,7 +36,7 @@ export default async function Home() {
                 <h3 className="text-xl font-semibold mb-2">{course.title}</h3>
                 <p className="text-gray-600 mb-4">{course.description}</p>
                 <Button variant="outline" asChild>
-                  <Link href={`/eduhub/courses/${course.id}`}>Learn More</Link>
+                  <Link href={`/courses/${course.id}`}>Learn More</Link>
                 </Button>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default async function Home() {
           {subjects.map((subject: any) => (
             <Link
               key={subject.id}
-              href={`/eduhub/subjects/${subject.id}`}
+              href={`/subjects/${subject.id}`}
               className="bg-blue-100 text-blue-800 rounded-lg p-6 text-center hover:bg-blue-200 transition-colors"
             >
               {subject.title}

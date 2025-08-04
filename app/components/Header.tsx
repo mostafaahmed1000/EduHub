@@ -15,7 +15,7 @@ export default function Header() {
 
   const handleLogout = async () => {
     await logout()
-    router.push('/eduhub/')
+    router.push('/')
   }
 
   const toggleMenu = () => {
@@ -36,24 +36,24 @@ export default function Header() {
             <nav className="flex-shrink-0">
               <ul className="flex items-center space-x-6">
                 <li>
-                  <Link href="/eduhub/subjects" className="hover:text-white">
+                  <Link href="/subjects" className="hover:text-white">
                     Subjects
                   </Link>
                 </li>
                 <li>
-                  <Link href="/eduhub/courses" className="hover:text-white">
+                  <Link href="s" className="hover:text-white">
                     Courses
                   </Link>
                 </li>
                 {user ? (
                   <>
                     <li>
-                      <Link href="/eduhub/dashboard" className="hover:text-white">
+                      <Link href="/dashboard" className="hover:text-white">
                         My Courses
                       </Link>
                     </li>
                     <li>
-                      <Link href="/eduhub/instructor/dashboard" className="hover:text-white">
+                      <Link href="ctor/dashboard" className="hover:text-white">
                         Instructor
                       </Link>
                     </li>
@@ -75,7 +75,7 @@ export default function Header() {
                         className="text-gray-600 border-gray-100 hover:bg-gray-100 hover:text-blue-600"
                         asChild
                       >
-                        <Link href="/eduhub/login">Login</Link>
+                        <Link href=">Login</Link>
                       </Button>
                     </li>
                     <li>
@@ -84,7 +84,7 @@ export default function Header() {
                         className="text-gray-600 border-gray-100 hover:bg-gray-100 hover:text-blue-600"
                         asChild
                       >
-                        <Link href="/eduhub/signup">Sign Up</Link>
+                        <Link href="">Sign Up</Link>
                       </Button>
                     </li>
                   </>
@@ -104,24 +104,24 @@ export default function Header() {
             <nav className="mt-4">
               <ul className="space-y-2">
                 <li>
-                  <Link href="/eduhub/subjects" className="block hover:text-white">
+                  <Link href="/subjects" className="block hover:text-white">
                     Subjects
                   </Link>
                 </li>
                 <li>
-                  <Link href="/eduhub/courses" className="block hover:text-white">
+                  <Link href="/courses" className="block hover:text-white">
                     Courses
                   </Link>
                 </li>
                 {user ? (
                   <>
                     <li>
-                      <Link href="/eduhub/dashboard" className="block hover:text-white">
+                      <Link href="/dashboard" className="block hover:text-white">
                       My Courses
                       </Link>
                     </li>
                     <li>
-                      <Link href="/eduhub/instructor/dashboard" className="block hover:text-white">
+                      <Link href="/instructor/dashboard" className="block hover:text-white">
                         Instructor
                       </Link>
                     </li>
@@ -143,7 +143,7 @@ export default function Header() {
                         className="w-full text-gray-600 border-gray-100 hover:bg-gray-100 hover:text-blue-600"
                         asChild
                       >
-                        <Link href="/eduhub/login">Login</Link>
+                        <Link href="/login">Login</Link>
                       </Button>
                     </li>
                     <li>
@@ -152,7 +152,7 @@ export default function Header() {
                         className="w-full text-gray-600 border-gray-100 hover:bg-gray-100 hover:text-blue-600"
                         asChild
                       >
-                        <Link href="/eduhub/signup">Sign Up</Link>
+                        <Link href="/signup">Sign Up</Link>
                       </Button>
                     </li>
                   </>

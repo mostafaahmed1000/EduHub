@@ -17,7 +17,7 @@ export default function SignupPage() {
     e.preventDefault()
     try {
       await signup(username, password, email)
-      router.push("/eduhub/dashboard")
+      router.push("/dashboard")
     } catch (error) {
       console.error("Signup failed:", error)
     }
