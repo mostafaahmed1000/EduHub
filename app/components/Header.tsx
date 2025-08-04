@@ -41,7 +41,7 @@ export default function Header() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="s" className="hover:text-white">
+                  <Link href="/courses" className="hover:text-white">
                     Courses
                   </Link>
                 </li>
@@ -53,7 +53,7 @@ export default function Header() {
                       </Link>
                     </li>
                     <li>
-                      <Link href="ctor/dashboard" className="hover:text-white">
+                      <Link href="/instructor/dashboard" className="hover:text-white">
                         Instructor
                       </Link>
                     </li>
@@ -75,7 +75,7 @@ export default function Header() {
                         className="text-gray-600 border-gray-100 hover:bg-gray-100 hover:text-blue-600"
                         asChild
                       >
-                        <Link href=">Login</Link>
+                        <Link href="/login">Login</Link>
                       </Button>
                     </li>
                     <li>
@@ -84,7 +84,7 @@ export default function Header() {
                         className="text-gray-600 border-gray-100 hover:bg-gray-100 hover:text-blue-600"
                         asChild
                       >
-                        <Link href="">Sign Up</Link>
+                        <Link href="/signup">Sign Up</Link>
                       </Button>
                     </li>
                   </>
