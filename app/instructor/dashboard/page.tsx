@@ -48,7 +48,7 @@ export default function InstructorDashboardPage() {
     <div className="container mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold mb-8">Instructor Dashboard</h1>
       <Button asChild className="mb-8">
-        <Link href="/instructor/courses/new">Create New Course</Link>
+        <Link href="/eduhub/instructor/courses/new">Create New Course</Link>
       </Button>
       <h2 className="text-2xl font-semibold mb-4">Your Courses</h2>
       {ownedCourses.length > 0 ? (
@@ -72,7 +72,7 @@ export default function InstructorDashboardPage() {
               </div>
               <div className="flex space-x-2">
                 <Button variant="outline" asChild>
-                  <Link href={`/courses/${course.id}/`}>Edit</Link>
+                  <Link href={`/eduhub/courses/${course.id}/`}>Edit</Link>
                 </Button>
               </div>
             </div>

@@ -13,22 +13,22 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/subjects" className="hover:text-blue-600">
+                <Link href="/eduhub/subjects" className="hover:text-blue-600">
                   Subjects
                 </Link>
               </li>
               <li>
-                <Link href="/courses" className="hover:text-blue-600">
+                <Link href="/eduhub/courses" className="hover:text-blue-600">
                   Courses
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-blue-600">
+                <Link href="/eduhub/about" className="hover:text-blue-600">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-blue-600">
+                <Link href="/eduhub/contact" className="hover:text-blue-600">
                   Contact
                 </Link>
               </li>

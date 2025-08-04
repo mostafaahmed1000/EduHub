@@ -52,7 +52,7 @@ export default function DashboardPage() {
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">{course.title}</h3>
                 <Button variant="outline" asChild>
-                  <Link href={`/courses/${course.id}`}>Continue Learning</Link>
+                  <Link href={`/eduhub/courses/${course.id}`}>Continue Learning</Link>
                 </Button>
               </div>
             </div>

@@ -36,7 +36,7 @@ export default async function SubjectCoursesPage({ params }: { params: { id: str
                     Instructor: {course.owner?.full_name || course.owner?.username}
                   </p>
                   <Button variant="outline" asChild>
-                    <Link href={`/courses/${course.id}`}>Learn More</Link>
+                    <Link href={`/eduhub/courses/${course.id}`}>Learn More</Link>
                   </Button>
                 </div>
               </div>

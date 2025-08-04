@@ -7,9 +7,6 @@ try {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/eduhub',
-  assetPrefix: '/eduhub',
-  
   output: 'standalone',
   eslint: {
     ignoreDuringBuilds: true,

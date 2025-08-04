@@ -11,7 +11,7 @@ export default async function SubjectsPage() {
         {subjects.map((subject: { id: number; title: string; slug: string }) => (
           <Link
             key={subject.id}
-            href={`/subjects/${subject.id}`}
+            href={`/eduhub/subjects/${subject.id}`}
             className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow"
           >
             <h2 className="text-2xl font-semibold mb-2">{subject.title}</h2>
