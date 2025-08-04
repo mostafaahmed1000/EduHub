@@ -20,7 +20,7 @@ export default function EnrollButton({ courseId }: { courseId: number }) {
         description: "You need to be logged in to enroll in a course",
         variant: "destructive",
       })
-      router.push("/login")
+      router.push("/eduhub/login")
       return
     }
 

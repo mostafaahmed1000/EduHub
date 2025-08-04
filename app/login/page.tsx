@@ -16,7 +16,7 @@ export default function LoginPage() {
     e.preventDefault()
     try {
       await login(username, password)
-      router.push("/dashboard")
+      router.push("/eduhub/dashboard")
     } catch (error) {
       console.error("Login failed:", error)
     }

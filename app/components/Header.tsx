@@ -15,7 +15,7 @@ export default function Header() {
 
   const handleLogout = async () => {
     await logout()
-    router.push('/')
+    router.push('/eduhub/')
   }
 
   const toggleMenu = () => {

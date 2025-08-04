@@ -11,7 +11,7 @@ export default function SearchBar() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
-    router.push(`/search?q=${encodeURIComponent(query)}`)
+    router.push(`/eduhub/search?q=${encodeURIComponent(query)}`)
   }
 
   return (

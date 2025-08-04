@@ -17,7 +17,7 @@ export default function InstructorDashboardPage() {
 
   useEffect(() => {
     if (!isLoading && !user) {
-      router.push("/login")
+      router.push("/eduhub/login")
     }
   }, [user, isLoading, router])
 
