@@ -31,7 +31,7 @@ export default function EnrollButton({ courseId }: { courseId: number }) {
         title: "Success!",
         description: "You have successfully enrolled in this course",
       })
-      router.refresh()
+      router.push(`/courses/${courseId}`)
     } catch (error) {
       toast({
         title: "Failed to enroll",
